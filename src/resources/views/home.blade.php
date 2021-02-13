@@ -20,19 +20,19 @@
 @section('conteudo')
     <main id="pagina-home" class="container mt-4">
         <div class="d-flex align-items-center justify-content-between">
-            <a href="#" class="d-flex flex-column align-items-center justify-content-center">
+            <a href="{{ url('curso') }}" class="d-flex flex-column align-items-center justify-content-center">
                 <img class="" src="{{ url('images/curso_ico.png') }}" alt="Cursos">
                 <h2 class="font-weight-bold">Cursos</h2>
             </a>
-            <a href="#" class="d-flex flex-column align-items-center justify-content-center">
+            <a href="{{ url('disciplina') }}" class="d-flex flex-column align-items-center justify-content-center">
                 <img class="" src="{{ url('images/disciplina_ico.png') }}" alt="Disciplinas">
                 <h2 class="font-weight-bold">Disciplinas</h2>
             </a>
-            <a href="#" class="d-flex flex-column align-items-center justify-content-center">
+            <a href="{{ url('professor') }}" class="d-flex flex-column align-items-center justify-content-center">
                 <img class="" src="{{ url('images/professor_ico.png') }}" alt="Professor">
                 <h2 class="font-weight-bold">Professor</h2>
             </a>
-            <a href="#" class="d-flex flex-column align-items-center justify-content-center">
+            <a href="{{ url('aluno') }}" class="d-flex flex-column align-items-center justify-content-center">
                 <img class="" src="{{ url('images/aluno_ico.png') }}" alt="Aluno">
                 <h2 class="font-weight-bold">Aluno</h2>
             </a>

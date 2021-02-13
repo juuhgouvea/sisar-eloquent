@@ -20,3 +20,19 @@ Route::get('/', function () {
 Route::get('/curso', function () {
     return view('cursos.index');
 });
+
+Route::get('/professor', function () {
+    return view('professores.index');
+});
+
+Route::get('/disciplina', function () {
+    return view('disciplinas.index');
+});
+
+Route::get('/aluno', function () {
+    return view('alunos.index');
+});
+
+Route::get('/matricula', function () {
+    return view('matriculas.index');
+});
