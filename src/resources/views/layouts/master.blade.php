@@ -26,5 +26,6 @@
     @yield('conteudo')
 
     @yield('scripts')
+    <script src="{{ url('js/app.js') }}"></script>
 </body>
 </html>
