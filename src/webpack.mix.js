@@ -17,5 +17,6 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.css('resources/css/main.css', 'public/css');
 mix.css('resources/css/pagina-home.css', 'public/css');
+mix.css('resources/css/pagina-matriculas.css', 'public/css');
 
 mix.copyDirectory('resources/images', 'public/images');
