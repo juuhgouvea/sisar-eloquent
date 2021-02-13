@@ -1,0 +1,23 @@
+a {
+    text-decoration: none;
+    color: var(--dark);
+}
+
+a:hover {
+    text-decoration: underline;
+    color: inherit;
+}
+
+nav,
+.nav,
+nav.nav {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 8px;
+}
+
+.titulo {
+    grid-column: span 4;
+    text-align: center;
+    margin: 0;
+}
