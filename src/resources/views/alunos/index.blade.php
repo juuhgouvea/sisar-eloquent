@@ -10,6 +10,7 @@
 @section('conteudo')
     <main id="pagina-alunos" class="container mt-4">
         <button
+            id="js-cadastrar"
             type="button"
             data-toggle="modal"
             data-target="#modal-form-aluno"
@@ -31,20 +32,20 @@
                 </thead>
                 <tbody>
                     @foreach($alunos as $aluno)
-                        <tr>
+                        <tr data-id="{{ $aluno->id }}">
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <p class="m-0">{{ $aluno->nome }}</p>
+                                    <p class="m-0" data-nome="{{ $aluno->nome }}">{{ $aluno->nome }}</p>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <p class="m-0">{{ $aluno->email }}</p>
+                                    <p class="m-0" data-email="{{ $aluno->email }}">{{ $aluno->email }}</p>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <p class="m-0">{{ $aluno->curso->nome }}</p>
+                                    <p class="m-0" data-curso="{{ $aluno->curso->id }}">{{ $aluno->curso->nome }}</p>
                                 </div>
                             </td>
                             <td>
@@ -62,7 +63,12 @@
                             </td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <button class="btn m-0 p-0">
+                                    <button
+                                        class="btn m-0 p-0"
+                                        data-toggle="modal"
+                                        data-target="#modal-form-aluno"
+                                        data-acao="editar"
+                                    >
                                         <img src="{{ url('images/icons/edit.svg') }}" alt="Editar" class="icone">
                                     </button>
                                     <button class="btn m-0 p-0">
@@ -108,8 +114,11 @@
                             id="form-aluno"
                             action="{{ route('aluno.store') }}"
                             method="POST"
+                            data-url-cadastro="{{ route('aluno.store')}}"
+                            data-url-edicao="{{ route('aluno.update', ['id' => 'id'])}}"
                         >
                             @csrf
+                            <input type="hidden" name="id">
                             <div class="form-group">
                                 <label for="nome">Nome</label>
                                 <input id="nome"name="nome" type="text" class="form-control">
@@ -137,4 +146,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script defer src="{{ url('js/alunos/index.js') }}"></script>
 @endsection

@@ -84,7 +84,16 @@ class AlunosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $aluno = Aluno::find($id);
+
+        $aluno->fill([
+            'nome' => $request->input('nome'),
+            'email' => $request->input('email'),
+            'curso_id' => $request->input('curso'),
+        ]);
+        $aluno->save();
+
+        return redirect()->route('aluno.index');
     }
 
     /**
