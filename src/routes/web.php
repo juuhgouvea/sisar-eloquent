@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('curso', 'App\Http\Controllers\CursoController')
+Route::resource('curso', 'App\Http\Controllers\CursosController')
     ->only(['index', 'store', 'update'])
     ->parameters(['curso' => 'id']);
 
