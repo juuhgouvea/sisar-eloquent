@@ -1,3 +1,7 @@
+html, body {
+    font-family: Roboto, sans-serif;
+}
+
 a {
     text-decoration: none;
     color: var(--dark);
@@ -17,8 +21,12 @@ nav.nav {
 }
 
 .titulo {
+    font-size: 24px;
     grid-column: span 4;
     text-align: center;
+    color: white;
+    text-decoration: none !important;
+    cursor: pointer !important;
     margin: 0;
 }
 
