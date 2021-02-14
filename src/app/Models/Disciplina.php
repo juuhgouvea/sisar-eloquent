@@ -12,6 +12,10 @@ class Disciplina extends Model
     protected $table = 'disciplinas';
     protected $fillable = ['nome', 'professor_id', 'curso_id'];
 
+    public function curso() {
+        return $this->belongsTo('App\Models\Curso');
+    }
+
     public function alunos() {
         return $this->belongsToMany('App\Models\Aluno', 'matriculas');
     }
