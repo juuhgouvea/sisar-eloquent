@@ -76,7 +76,13 @@ class ProfessoresController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $professor = Professor::find($id);
+        $dados = $request->all();
+
+        $professor->fill($dados);
+        $professor->save();
+
+        return redirect()->route('professor.index');
     }
 
     /**

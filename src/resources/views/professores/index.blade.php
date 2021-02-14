@@ -11,6 +11,7 @@
     <main id="pagina-professores" class="container mt-4">
         <button
             type="button"
+            id="js-cadastrar"
             data-toggle="modal"
             data-target="#modal-form-professor"
             class="btn btn-primary btn-lg w-100 mt-4"
@@ -28,20 +29,25 @@
                 </thead>
                 <tbody>
                     @foreach($professores as $professor)
-                        <tr>
+                        <tr data-id="{{ $professor->id }}">
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <p class="m-0">{{ $professor->nome }}</p>
+                                    <p class="m-0" data-nome="{{ $professor->nome}}">{{ $professor->nome }}</p>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <p class="m-0">{{ $professor->email }}</p>
+                                    <p class="m-0" data-email="{{ $professor->email}}">{{ $professor->email }}</p>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <button class="btn m-0 p-0">
+                                    <button
+                                        class="btn m-0 p-0"
+                                        data-acao="editar"
+                                        data-toggle="modal"
+                                        data-target="#modal-form-professor"
+                                    >
                                         <img src="{{ url('images/icons/edit.svg') }}" alt="Editar" class="icone">
                                     </button>
                                 </div>
@@ -84,8 +90,11 @@
                             id="form-professor"
                             action="{{ route('professor.store') }}"
                             method="POST"
+                            data-url-cadastro="{{ route('professor.store') }}"
+                            data-url-edicao="{{ route('professor.update', ['id' => 'id']) }}"
                         >
                             @csrf
+                            <input name="id" type="hidden" value="">
                             <div class="form-group">
                                 <label for="nome">Nome</label>
                                 <input id="nome"name="nome" type="text" class="form-control" required>
@@ -104,4 +113,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script defer src="{{ url('js/professores/index.js') }}"></script>
 @endsection
