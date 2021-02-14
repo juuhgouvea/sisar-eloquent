@@ -17,9 +17,9 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/curso', function () {
-    return view('cursos.index');
-});
+Route::resource('curso', 'App\Http\Controllers\CursoController')
+    ->only(['index', 'store', 'update'])
+    ->parameters(['curso' => 'id']);
 
 Route::get('/professor', function () {
     return view('professores.index');
