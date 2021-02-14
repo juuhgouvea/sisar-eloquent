@@ -44,7 +44,13 @@ class AlunosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Aluno::create([
+            'nome' => $request->input('nome'),
+            'email' => $request->input('email'),
+            'curso_id' => $request->input('curso'),
+        ]);
+
+        return redirect()->route('aluno.index');
     }
 
     /**

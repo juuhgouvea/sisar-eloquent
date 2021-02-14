@@ -104,7 +104,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="form-aluno">
+                        <form
+                            id="form-aluno"
+                            action="{{ route('aluno.store') }}"
+                            method="POST"
+                        >
+                            @csrf
                             <div class="form-group">
                                 <label for="nome">Nome</label>
                                 <input id="nome"name="nome" type="text" class="form-control">
