@@ -10,6 +10,7 @@
 @section('conteudo')
     <main id="pagina-cursos" class="container mt-4">
         <button
+            id="js-cadastrar"
             type="button"
             data-toggle="modal"
             data-target="#modal-form-curso"
@@ -27,15 +28,20 @@
                 </thead>
                 <tbody>
                     @foreach($cursos as $curso)
-                        <tr>
+                        <tr data-id="{{ $curso->id }}">
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <p class="m-0">{{ $curso->nome }}</p>
+                                    <p class="m-0" data-nome="{{ $curso->nome}}">{{ $curso->nome }}</p>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <button class="btn m-0 p-0">
+                                    <button
+                                        class="btn m-0 p-0"
+                                        data-acao="editar"
+                                        data-toggle="modal"
+                                        data-target="#modal-form-curso"
+                                    >
                                         <img src="{{ url('images/icons/edit.svg') }}" alt="Editar" class="icone">
                                     </button>
                                 </div>
@@ -74,8 +80,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('curso.store') }}" method="POST" id="form-curso">
+                        <form
+                            data-url-cadastro="{{ route('curso.store') }}"
+                            data-url-edicao="{{ route('curso.update', ['id' => 'id']) }}"
+                            action="{{ route('curso.store') }}" method="POST" id="form-curso">
                             @csrf
+                            <input name="id" type="hidden" value="">
                             <div class="form-group">
                                 <label for="nome">Nome</label>
                                 <input id="nome"name="nome" type="text" class="form-control">
@@ -90,4 +100,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script defer src="{{ url('js/cursos/index.js') }}"></script>
 @endsection

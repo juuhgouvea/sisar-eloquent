@@ -77,7 +77,15 @@ class CursoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $curso = Curso::find($id);
+        $nome = $request->input('nome');
+
+        $curso->fill([
+            'nome' => $nome
+        ]);
+        $curso->save();
+
+        return redirect()->route('curso.index');
     }
 
     /**
