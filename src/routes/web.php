@@ -33,6 +33,6 @@ Route::resource('aluno', 'App\Http\Controllers\AlunosController')
     ->only(['index', 'store', 'update'])
     ->parameters(['aluno' => 'id']);
 
-Route::get('/matricula', function () {
-    return view('matriculas.index');
-});
+Route::resource('matricula', 'App\Http\Controllers\MatriculasController')
+    ->only(['index', 'update'])
+    ->parameters(['matricula' => 'aluno_id']);
