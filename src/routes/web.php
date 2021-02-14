@@ -29,9 +29,9 @@ Route::resource('disciplina', 'App\Http\Controllers\DisciplinasController')
     ->only(['index', 'store', 'update'])
     ->parameters(['disciplina' => 'id']);
 
-Route::get('/aluno', function () {
-    return view('alunos.index');
-});
+Route::resource('aluno', 'App\Http\Controllers\AlunosController')
+    ->only(['index', 'store', 'update'])
+    ->parameters(['aluno' => 'id']);
 
 Route::get('/matricula', function () {
     return view('matriculas.index');
