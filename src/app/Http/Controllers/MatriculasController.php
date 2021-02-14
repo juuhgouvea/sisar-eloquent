@@ -19,7 +19,7 @@ class MatriculasController extends Controller
             ->where('id', $request->input('aluno_id'))
             ->first();
 
-        $disciplinas = Disciplina::all();
+        $disciplinas = Disciplina::where('curso_id', $aluno->curso->id)->get();
 
         return view('matriculas.index')
             ->with([
