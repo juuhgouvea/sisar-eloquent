@@ -21,9 +21,9 @@ Route::resource('curso', 'App\Http\Controllers\CursosController')
     ->only(['index', 'store', 'update'])
     ->parameters(['curso' => 'id']);
 
-Route::get('/professor', function () {
-    return view('professores.index');
-});
+Route::resource('professor', 'App\Http\Controllers\ProfessoresController')
+    ->only(['index', 'store', 'update'])
+    ->parameters(['professor' => 'id']);
 
 Route::get('/disciplina', function () {
     return view('disciplinas.index');
