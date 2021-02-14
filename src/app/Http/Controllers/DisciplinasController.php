@@ -86,7 +86,17 @@ class DisciplinasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $disciplina = Disciplina::find($id);
+        $nome = $request->input('nome');
+
+        $disciplina->fill([
+            'nome' => $request->input('nome'),
+            'curso_id' => $request->input('curso'),
+            'professor_id' => $request->input('professor'),
+        ]);
+        $disciplina->save();
+
+        return redirect()->route('disciplina.index');
     }
 
     /**

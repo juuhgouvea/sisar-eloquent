@@ -21,5 +21,6 @@ mix.css('resources/css/pagina-matriculas.css', 'public/css');
 
 mix.js('resources/js/cursos/index.js', 'public/js/cursos');
 mix.js('resources/js/professores/index.js', 'public/js/professores');
+mix.js('resources/js/disciplinas/index.js', 'public/js/disciplinas');
 
 mix.copyDirectory('resources/images', 'public/images');

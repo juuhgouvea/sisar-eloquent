@@ -10,6 +10,7 @@
 @section('conteudo')
     <main id="pagina-disciplinas" class="container mt-4">
         <button
+            id="js-cadastrar"
             type="button"
             data-toggle="modal"
             data-target="#modal-form-disciplina"
@@ -29,25 +30,30 @@
                 </thead>
                 <tbody>
                     @foreach($disciplinas as $disciplina)
-                        <tr>
+                        <tr data-id="{{ $disciplina->id }}">
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <p class="m-0">{{ $disciplina->nome }}</p>
+                                    <p class="m-0" data-nome="{{ $disciplina->nome }}">{{ $disciplina->nome }}</p>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <p class="m-0">{{ $disciplina->curso->nome }}</p>
+                                    <p class="m-0" data-curso="{{ $disciplina->curso->id }}">{{ $disciplina->curso->nome }}</p>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <p class="m-0">{{ $disciplina->professor->nome }}</p>
+                                    <p class="m-0" data-professor="{{ $disciplina->professor->id }}">{{ $disciplina->professor->nome }}</p>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <button class="btn m-0 p-0">
+                                    <button
+                                        class="btn m-0 p-0"
+                                        data-toggle="modal"
+                                        data-target="#modal-form-disciplina"
+                                        data-acao="editar"
+                                    >
                                         <img src="{{ url('images/icons/edit.svg') }}" alt="Editar" class="icone">
                                     </button>
                                 </div>
@@ -90,8 +96,11 @@
                             id="form-disciplina"
                             action="{{ route('disciplina.index') }}"
                             method="POST"
+                            data-url-cadastro="{{ route('disciplina.store') }}"
+                            data-url-edicao="{{ route('disciplina.update', ['id' => 'id']) }}"
                         >
                             @csrf
+                            <input name="id" type="hidden" value="">
                             <div class="form-group">
                                 <label for="nome">Nome</label>
                                 <input id="nome"name="nome" type="text" class="form-control" required>
@@ -124,4 +133,9 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('scripts')
+    <script defer src="{{ url('js/disciplinas/index.js') }}"></script>
 @endsection
