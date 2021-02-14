@@ -38,7 +38,11 @@ class ProfessoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dados = $request->all();
+
+        Professor::create($dados);
+
+        return redirect()->route('professor.index');
     }
 
     /**
