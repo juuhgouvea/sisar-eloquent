@@ -1,0 +1,23 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/cursos/index.js": "/js/cursos/index.js",
+    "/js/professores/index.js": "/js/professores/index.js",
+    "/js/disciplinas/index.js": "/js/disciplinas/index.js",
+    "/js/alunos/index.js": "/js/alunos/index.js",
+    "/css/app.css": "/css/app.css",
+    "/css/pagina-matriculas.css": "/css/pagina-matriculas.css",
+    "/css/pagina-home.css": "/css/pagina-home.css",
+    "/css/main.css": "/css/main.css",
+    "/images/alunop_ico.png": "/images/alunop_ico.png",
+    "/images/aluno_ico.png": "/images/aluno_ico.png",
+    "/images/componente_ico.png": "/images/componente_ico.png",
+    "/images/conceito_ico.png": "/images/conceito_ico.png",
+    "/images/cursop_ico.png": "/images/cursop_ico.png",
+    "/images/curso_ico.png": "/images/curso_ico.png",
+    "/images/disciplinap_ico.png": "/images/disciplinap_ico.png",
+    "/images/disciplina_ico.png": "/images/disciplina_ico.png",
+    "/images/ge_icon.ico": "/images/ge_icon.ico",
+    "/images/homep_ico.png": "/images/homep_ico.png",
+    "/images/home_ico.png": "/images/home_ico.png",
+    "/images/professor_ico.png": "/images/professor_ico.png"
+}
