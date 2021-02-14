@@ -15,44 +15,52 @@
             data-target="#modal-form-disciplina"
             class="btn btn-primary btn-lg w-100 mt-4"
         >
-            Cadastrar Novo Disciplina
+            Cadastrar Nova Disciplina
         </button>
-        <table class="table table-striped mt-4">
-            <thead>
-                <tr>
-                    <th class="text-center">Nome</th>
-                    <th class="text-center">Curso</th>
-                    <th class="text-center">Professor</th>
-                    <th class="text-center">Eventos</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <p class="m-0">DESENVOLVIMENTO WEB II</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <p class="m-0">TECNOLÓGO EM ANALISE E DESENVOLVIMENTO DE SISTEMAS</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <p class="m-0">Gil Eduardo</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <button class="btn m-0 p-0">
-                                <img src="{{ url('images/icons/edit.svg') }}" alt="Editar" class="icone">
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        @if(isset($disciplinas) && count($disciplinas) > 0)
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th class="text-center">Nome</th>
+                        <th class="text-center">Curso</th>
+                        <th class="text-center">Professor</th>
+                        <th class="text-center">Eventos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($disciplinas as $disciplina)
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <p class="m-0">{{ $disciplina->nome }}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <p class="m-0">{{ $disciplina->curso->nome }}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <p class="m-0">{{ $disciplina->professor->nome }}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <button class="btn m-0 p-0">
+                                        <img src="{{ url('images/icons/edit.svg') }}" alt="Editar" class="icone">
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            <div class="alert alert-danger w-100 mt-4">
+                <h4 class="text-center m-0">Não há disciplinas cadastradas.</h4>
+            </div>
+        @endif
     </main>
 
     <div
@@ -67,7 +75,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Cadastrar Novo Disciplina</h5>
+                        <h5 class="modal-title">Cadastrar Nova Disciplina</h5>
                         <button
                             type="button"
                             class="close"
@@ -87,14 +95,18 @@
                                 <label for="curso">Curso</label>
                                 <select id="curso" name="curso" class="form-control">
                                     <option value="" selected disabled>Selecione o Curso</option>
-                                    <option value="">Tecnólogo em Ánalise e Desenvolvimento de Sistemas</option>
+                                    @foreach(($cursos ?? []) as $curso)
+                                        <option value="{{ $curso->id }}">{{ $curso->nome }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="professor">Professor</label>
                                 <select id="professor" name="professor" class="form-control">
                                     <option value="" selected disabled>Selecione o Professor</option>
-                                    <option value="">Gil Eduardo</option>
+                                    @foreach(($professores ?? []) as $professor)
+                                        <option value="{{ $professor->id }}">{{ $professor->nome }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </form>
