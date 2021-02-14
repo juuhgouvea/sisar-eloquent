@@ -17,36 +17,44 @@
         >
             Cadastrar Novo Professor
         </button>
-        <table class="table table-striped mt-4">
-            <thead>
-                <tr>
-                    <th class="text-center">Nome</th>
-                    <th class="text-center">E-mail</th>
-                    <th class="text-center">Eventos</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <p class="m-0">Gil Eduardo</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <p class="m-0">gilgea@gmail.com</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <button class="btn m-0 p-0">
-                                <img src="{{ url('images/icons/edit.svg') }}" alt="Editar" class="icone">
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        @if(isset($professores) && count($professores) > 0)
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th class="text-center">Nome</th>
+                        <th class="text-center">E-mail</th>
+                        <th class="text-center">Eventos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($professores as $professor)
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <p class="m-0">{{ $professor->nome }}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <p class="m-0">{{ $professor->email }}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <button class="btn m-0 p-0">
+                                        <img src="{{ url('images/icons/edit.svg') }}" alt="Editar" class="icone">
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            <div class="alert alert-danger w-100 mt-4">
+                <h4 class="text-center m-0">Não há professores cadastrados.</h4>
+            </div>
+        @endif
     </main>
 
     <div
