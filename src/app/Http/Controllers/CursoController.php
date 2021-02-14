@@ -37,6 +37,13 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
+        $nome = $request->input('nome');
+
+        Curso::create([
+            'nome' => $nome,
+        ]);
+
+        return redirect()->route('curso.index');
     }
 
     /**

@@ -74,7 +74,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="form-curso">
+                        <form action="{{ route('curso.store') }}" method="POST" id="form-curso">
+                            @csrf
                             <div class="form-group">
                                 <label for="nome">Nome</label>
                                 <input id="nome"name="nome" type="text" class="form-control">
