@@ -17,53 +17,68 @@
         >
             Cadastrar Novo Aluno
         </button>
-        <table class="table table-striped mt-4">
-            <thead>
-                <tr>
-                    <th class="text-center">Nome</th>
-                    <th class="text-center">E-mail</th>
-                    <th class="text-center">Curso</th>
-                    <th class="text-center">Disciplinas</th>
-                    <th class="text-center">Eventos</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <p class="m-0">EVANDRO</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <p class="m-0">evandro@email.com</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <p class="m-0">TECNOLÓGO EM ANALISE E DESENVOLVIMENTO DE SISTEMAS</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <select class="form-control text-center">
-                                <option value="">Desenvolvimento Web II</option>
-                            </select>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <button class="btn m-0 p-0">
-                                <img src="{{ url('images/icons/edit.svg') }}" alt="Editar" class="icone">
-                            </button>
-                            <button class="btn m-0 p-0">
-                                <img src="{{ url('images/icons/config.svg') }}" alt="Editar" class="icone">
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+
+        @if(isset($alunos) && count($alunos) > 0)
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th class="text-center">Nome</th>
+                        <th class="text-center">E-mail</th>
+                        <th class="text-center">Curso</th>
+                        <th class="text-center">Disciplinas</th>
+                        <th class="text-center">Eventos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($alunos as $aluno)
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <p class="m-0">{{ $aluno->nome }}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <p class="m-0">{{ $aluno->email }}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <p class="m-0">{{ $aluno->curso->nome }}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <select class="form-control text-center">
+                                        @if(isset($aluno->disciplinas) && count($aluno->disciplinas) > 0)
+                                            @foreach($aluno->disciplinas as $disciplina)
+                                                <option>{{ $disciplina->nome }}</option>
+                                            @endforeach
+                                        @else
+                                            <option>Nenhuma disciplina encontrada</option>
+                                        @endif
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <button class="btn m-0 p-0">
+                                        <img src="{{ url('images/icons/edit.svg') }}" alt="Editar" class="icone">
+                                    </button>
+                                    <button class="btn m-0 p-0">
+                                        <img src="{{ url('images/icons/config.svg') }}" alt="Editar" class="icone">
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            <div class="alert alert-danger w-100 mt-4">
+                <h4 class="text-center m-0">Não há alunos cadastrados.</h4>
+            </div>
+        @endif
     </main>
 
     <div
@@ -102,7 +117,9 @@
                                 <label for="curso">Curso</label>
                                 <select id="curso" name="curso" class="form-control">
                                     <option value="" selected disabled>Selecione o Curso</option>
-                                    <option value="">Tecnólogo em Ánalise e Desenvolvimento de Sistemas</option>
+                                    @foreach(($cursos ?? []) as $curso)
+                                        <option value="{{ $curso->id }}">{{ $curso->nome }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </form>
