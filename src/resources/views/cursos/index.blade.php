@@ -17,30 +17,38 @@
         >
             Cadastrar Novo Curso
         </button>
-        <table class="table table-striped mt-4">
-            <thead>
-                <tr>
-                    <th class="text-center w-75">Nome</th>
-                    <th class="text-center w-25">Eventos</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <p class="m-0">TECNOLÓGO EM ANALISE E DESENVOLVIMENTO DE SISTEMAS</p>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="d-flex align-items-center justify-content-center">
-                            <button class="btn m-0 p-0">
-                                <img src="{{ url('images/icons/edit.svg') }}" alt="Editar" class="icone">
-                            </button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        @if(isset($cursos) && count($cursos) > 0)
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th class="text-center w-75">Nome</th>
+                        <th class="text-center w-25">Eventos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($cursos as $curso)
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <p class="m-0">{{ $curso->nome }}</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <button class="btn m-0 p-0">
+                                        <img src="{{ url('images/icons/edit.svg') }}" alt="Editar" class="icone">
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            <div class="alert alert-danger w-100 mt-4">
+                <h4 class="text-center m-0">Não há cursos cadastrados.</h4>
+            </div>
+        @endif
     </main>
 
     <div
