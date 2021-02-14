@@ -71,9 +71,12 @@
                                     >
                                         <img src="{{ url('images/icons/edit.svg') }}" alt="Editar" class="icone">
                                     </button>
-                                    <button class="btn m-0 p-0">
+                                    <a
+                                        href="{{ route('matricula.index').'?aluno_id='.$aluno->id }}"
+                                        class="btn m-0 p-0"
+                                    >
                                         <img src="{{ url('images/icons/config.svg') }}" alt="Editar" class="icone">
-                                    </button>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
