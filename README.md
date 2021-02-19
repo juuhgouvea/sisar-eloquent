@@ -13,6 +13,8 @@
 7. Instale as dependências do Node: `npm install`
 8. Compile os assets: `npm run dev`
 9. Inicie o servidor: `php artisan serve`
+
+**Para executar os testes, utilize: `php artisan test`**
 ## Persistência
 ![EER SISAR](.github/database/sisar-eer.png)
 
