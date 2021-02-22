@@ -5,6 +5,7 @@
     "/js/disciplinas/index.js": "/js/disciplinas/index.js",
     "/js/alunos/index.js": "/js/alunos/index.js",
     "/css/app.css": "/css/app.css",
+    "/css/pagina-restrita.css": "/css/pagina-restrita.css",
     "/css/pagina-matriculas.css": "/css/pagina-matriculas.css",
     "/css/pagina-home.css": "/css/pagina-home.css",
     "/css/main.css": "/css/main.css",
@@ -19,5 +20,6 @@
     "/images/ge_icon.ico": "/images/ge_icon.ico",
     "/images/homep_ico.png": "/images/homep_ico.png",
     "/images/home_ico.png": "/images/home_ico.png",
-    "/images/professor_ico.png": "/images/professor_ico.png"
+    "/images/professor_ico.png": "/images/professor_ico.png",
+    "/images/restrito.png": "/images/restrito.png"
 }
