@@ -36,3 +36,7 @@ Route::resource('aluno', 'App\Http\Controllers\AlunosController')
 Route::resource('matricula', 'App\Http\Controllers\MatriculasController')
     ->only(['index', 'update'])
     ->parameters(['matricula' => 'aluno_id']);
+
+Route::get('/negado', function() {
+    return view('restrito');
+});
