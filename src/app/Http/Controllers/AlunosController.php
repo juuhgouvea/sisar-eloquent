@@ -91,6 +91,11 @@ class AlunosController extends Controller
             'email' => $request->input('email'),
             'curso_id' => $request->input('curso'),
         ]);
+
+        if($aluno->isDirty('curso_id')) {
+            $aluno->disciplinas()->detach();
+        }
+
         $aluno->save();
 
         return redirect()->route('aluno.index');
