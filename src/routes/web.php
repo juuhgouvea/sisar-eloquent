@@ -15,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
     ->name('home');
 
 Route::middleware('auth')->group(function() {
+    Route::get('/', function() {
+        return redirect()->route('home');
+    });
+
     Route::resource('curso', 'App\Http\Controllers\CursosController')
     ->only(['index', 'store', 'update'])
     ->parameters(['curso' => 'id'])
