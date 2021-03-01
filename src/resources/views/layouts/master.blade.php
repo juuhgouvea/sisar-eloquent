@@ -22,7 +22,28 @@
                 SISAR - Sistema de Avaliação Remota
             </a>
             <div class="d-flex align-items-center justify-content-center">
-                @yield('menu-nav-direito')
+                @if(Auth::check())
+                    <div class="dropdown">
+                        <button
+                            id="dropdowMenu"
+                            class="btn p-2 m-0 dropdown-toggle text-white font-weight-bold"
+                            type="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            {{ Auth::user()->name }}
+                        </button>
+                        <div class="dropdown-menu m-0 p-0" aria-labelledby="dropdownMenu">
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn m-0 p-2 w-100 text-left">Sair</button>
+                            </form>
+                        </div>
+                    </div>
+                @else
+                    @yield('menu-nav-direito')
+                @endif
             </div>
         </nav>
     </header>
