@@ -59,11 +59,17 @@
                                 <label for="level" class="col-md-4 col-form-label text-md-right">{{ __('Nível de Acesso') }}</label>
 
                                 <div class="col-md-6">
-                                    <select name="level" id="level" class="form-control" required>
+                                    <select name="level" id="level" class="form-control @error('level') is-invalid @enderror" required>
                                         <option value="0" selected>Básico</option>
                                         <option value="1">Intermediário</option>
                                         <option value="2">Avançado</option>
                                     </select>
+
+                                    @error('level')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
 
