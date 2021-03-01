@@ -4,10 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AccessLevel
 {
-    private $level = 0;
     /**
      * Handle an incoming request.
      *
@@ -17,7 +17,9 @@ class AccessLevel
      */
     public function handle(Request $request, Closure $next, $minLevel)
     {
-        if($this->level < $minLevel) {
+        $userLevel = Auth::user()->level;
+
+        if($userLevel < $minLevel) {
             return redirect()->route('negado');
         }
 
