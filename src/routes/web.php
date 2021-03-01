@@ -46,3 +46,7 @@ Route::resource('matricula', 'App\Http\Controllers\MatriculasController')
 Route::get('/negado', function() {
     return view('restrito');
 })->name('negado');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
